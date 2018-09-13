@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Higher Order Components</title>
+    <script src="https://fb.me/react-0.14.7.js"></script>
+    <script src="https://fb.me/react-dom-0.14.7.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="lesson11styling.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+      // Higher Order Components are function that allow you to give functionality from one component to another
+      // You basically build a base component, liek a button, then add fuctionality to it depending on what you want to do, mouserOver, dbclick, click etc
+
+      // Higher Order Component
+      let BaseCount = (BasicComponent) => class extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            count: 0,
+            text: "Add"
+          }
+          this.incrementCount = this.incrementCount.bind(this)
+        }
+        incrementCount() {
+          this.setState({
+            count: this.state.count + 1
+          })
+        }
+        render() {
+          return(
+            <div className="container">
+            <BasicComponent {...this.state} increment={this.incrementCount} />
+            </div>
+          )
+        }
+      }
+
+      // Stateless Functional Components
+      const Button = (props) => {
+        return (
+          <button className="btn blue-btn"></button>
+        )
+      }
+
+      // If it doesn't need state, don't make it a class, just use a function stateless component
+
+
+      // To extend the component, we just parse our Basic components (Button) & (Label) to the BaseCount
+
+
+      // Render our extended component
+
+
+    </script>
+  </body>
+</html>
